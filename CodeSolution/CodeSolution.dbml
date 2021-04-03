@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CodeSolution" Class="CodeSolutionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-LT1J0C29\SQLEXPRESS;Initial Catalog=CodeSolution;Integrated Security=True" SettingsObjectName="CodeSolution.Properties.Settings" SettingsPropertyName="CodeSolutionConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="CommentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommentDesc" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SolutionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Comment" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vote" Member="Votes">
+    <Type Name="Vote">
+      <Column Name="VoteId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SolutionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Vote" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="Solution_Vote" Member="Solution" ThisKey="SolutionID" OtherKey="SolutionId" Type="Solution" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserEmail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserPassword" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="User_Comment" Member="Comments" ThisKey="UserId" OtherKey="UserId" Type="Comment" />
+      <Association Name="User_Vote" Member="Votes" ThisKey="UserId" OtherKey="UserId" Type="Vote" />
+      <Association Name="User_Solution" Member="Solutions" ThisKey="UserId" OtherKey="UserId" Type="Solution" />
+      <Association Name="User_Problem" Member="Problems" ThisKey="UserId" OtherKey="UserId" Type="Problem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Solution" Member="Solutions">
+    <Type Name="Solution">
+      <Column Name="SolutionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SolutionDesc" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ProblemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SolutionGivenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Solution_Vote" Member="Votes" ThisKey="SolutionId" OtherKey="SolutionID" Type="Vote" />
+      <Association Name="User_Solution" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="Problem_Solution" Member="Problem" ThisKey="ProblemId" OtherKey="ProblemId" Type="Problem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Problem" Member="Problems">
+    <Type Name="Problem">
+      <Column Name="ProblemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProblemDesc" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProblemAsked" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProblemViewed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProblemStatus" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="Problem_Solution" Member="Solutions" ThisKey="ProblemId" OtherKey="ProblemId" Type="Solution" />
+      <Association Name="User_Problem" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
