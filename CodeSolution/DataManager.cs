@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeSolution
 {
-    class DataManager
-    {
+   
         class DataManager
         {
             public void AddUser(User user)
@@ -72,4 +71,4 @@ namespace CodeSolution
         }
 
     }
-}
+
