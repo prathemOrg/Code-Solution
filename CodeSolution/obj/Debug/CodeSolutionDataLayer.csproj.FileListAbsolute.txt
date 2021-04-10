@@ -1,0 +1,7 @@
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\obj\Debug\CodeSolutionDataLayer.csprojAssemblyReference.cache
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\obj\Debug\CodeSolutionDataLayer.csproj.CoreCompileInputs.cache
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\obj\Debug\CodeSolution.exe
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\obj\Debug\CodeSolution.pdb
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\bin\Debug\CodeSolution.exe.config
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\bin\Debug\CodeSolution.exe
+C:\Users\prath\source\repos\CodeSolution\CodeSolution\bin\Debug\CodeSolution.pdb

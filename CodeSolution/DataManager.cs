@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeSolution
+
+namespace CodeSolutionDataLayer
 {
 
-    class DataManager
+   public class DataManager
     {
         public void AddUser(User user)
         {
@@ -83,7 +84,7 @@ namespace CodeSolution
         public User GetUserByID(int ID)
         {
             CodeSolutionDataContext dc = new CodeSolutionDataContext();
-            User userInfo = (from user in dc.Users where user.UserId.Equals(ID) select user).First();
+            var userInfo = (from user in dc.Users where user.UserId.Equals(ID) select  new {user.UserId,user.UserFirstName,user.UserLastName,user.UserEmail,user.UserRoleId,user.UserPassword });
             return userInfo;
         }
         public List<Problem> GetProblemsByUserID(int ID)
@@ -113,7 +114,7 @@ namespace CodeSolution
         public Comment GetCommentByID(int commentID)
         {
             CodeSolutionDataContext dc = new CodeSolutionDataContext();
-            Comment commentObj = (from comment in dc.Comments where comment.CommentId.Equals(commentID)).First();
+            Comment commentObj = (from comment in dc.Comments where comment.CommentId.Equals(commentID)select comment).First();
             return commentObj;
         }
 

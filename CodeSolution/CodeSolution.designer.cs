@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CodeSolution
+namespace CodeSolutionDataLayer
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

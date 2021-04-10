@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeSolution
+namespace CodeSolutionDataLayer
 {
     class Class1
     {
