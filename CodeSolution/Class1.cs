@@ -23,7 +23,7 @@ namespace CodeSolution
                 Console.WriteLine(user.UserFirstName);
                
             }
-            dm.DeleteUser(1);
+           // dm.DeleteUser(1);
             Console.ReadLine();
         }
         
