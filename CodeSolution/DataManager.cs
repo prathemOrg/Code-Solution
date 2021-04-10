@@ -84,7 +84,7 @@ namespace CodeSolutionDataLayer
         public User GetUserByID(int ID)
         {
             CodeSolutionDataContext dc = new CodeSolutionDataContext();
-            var userInfo = (from user in dc.Users where user.UserId.Equals(ID) select  new {user.UserId,user.UserFirstName,user.UserLastName,user.UserEmail,user.UserRoleId,user.UserPassword });
+            User userInfo = (from user in dc.Users where user.UserId.Equals(ID) select user).First();
             return userInfo;
         }
         public List<Problem> GetProblemsByUserID(int ID)
