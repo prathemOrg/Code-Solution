@@ -70,7 +70,6 @@ C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\System.Web.Web
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\WebGrease.dll
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\CodeSolution.pdb
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\CodeSolution.exe.config
-C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\Newtonsoft.Json.xml
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\System.Net.Http.Formatting.xml
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\System.Web.Helpers.xml
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\System.Web.Http.xml
@@ -86,3 +85,4 @@ C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\Microsoft.Code
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\obj\Debug\CodeSolutionApiLayer.csproj.CopyComplete
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\obj\Debug\CodeSolutionApiLayer.dll
 C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\obj\Debug\CodeSolutionApiLayer.pdb
+C:\Users\prath\source\repos\CodeSolution\CodeSolutionApiLayer\bin\Newtonsoft.Json.xml
