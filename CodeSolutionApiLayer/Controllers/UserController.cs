@@ -13,32 +13,61 @@ using Newtonsoft.Json.Linq;
 
 namespace CodeSolutionApiLayer.Controllers
 {
-    
+    [RoutePrefix("api/Users")]
     public class UserController : ApiController
     {
        private DataManager dataManager = new DataManager();
         
         [HttpGet]
-        [Route("api/users")]
-        public string GetAllUsers()
+        [Route("usersList")]
+        public HttpResponseMessage GetAllUsers()
+        
         {
-            var userList = dataManager.GetAllUsers();
-            var user1 = (from user2 in userList select new { user2.UserId, user2.UserFirstName, user2.UserLastName, user2.UserEmail, user2.UserRoleId }).ToList();
-            var jobj = JsonConvert.SerializeObject(user1);
-
-
-            return jobj;
+            try
+            {
+                var userList = dataManager.GetAllUsers();
+                if (userList != null)
+                {
+                    return Request.CreateResponse<List<User>>(HttpStatusCode.OK, userList);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Users not Found");
+                }
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+           
         }
 
         [HttpGet]
-        [Route("api/user")]
-        public User GetUserByID(int id)
+        [Route("userInfo/{id}")]
+        public HttpResponseMessage GetUserByID(int id)
         {
-            return dataManager.GetUserByID(id);
+            try 
+            {
+                
+               var user = dataManager.GetUserByID(id);
+                if (user != null)
+                {
+                    return Request.CreateResponse<User>(HttpStatusCode.OK, user);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User Not Found");
+                }
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
             
         }
         [HttpPost]
-        [Route("api/adduser")]
+        [Route("addUser")]
         public HttpResponseMessage PostUser([FromBody]string user)
         {
             try
@@ -68,6 +97,26 @@ namespace CodeSolutionApiLayer.Controllers
 
         }
 
+        [HttpDelete]
+        [Route("deleteUser/{id}")]
+
+        public IHttpActionResult DeleteUSer(int ID)
+        {
+            if (ID == 0)
+                return BadRequest();
+            try
+            {
+                if (dataManager.GetUserByID(ID)!=null)
+                {
+                    dataManager.DeleteUser(ID);
+                    return Ok("Deleted User Successfully");
+                }
+                else return Content(HttpStatusCode.NotFound, "User Not Found");
+            }catch(Exception ex)
+            {
+                return Content(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
     }
 }

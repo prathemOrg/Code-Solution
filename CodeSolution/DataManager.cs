@@ -83,9 +83,16 @@ namespace CodeSolutionDataLayer
         }
         public User GetUserByID(int ID)
         {
+            try 
+            { 
             CodeSolutionDataContext dc = new CodeSolutionDataContext();
             User userInfo = (from user in dc.Users where user.UserId.Equals(ID) select user).First();
             return userInfo;
+            }
+            catch
+            {
+                throw new Exception("User Not Found");
+            }
         }
         public List<Problem> GetProblemsByUserID(int ID)
         {
