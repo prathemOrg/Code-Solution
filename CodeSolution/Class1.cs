@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodeSolution;
 
 namespace CodeSolutionDataLayer
 {
     class Class1
     {
+        
        static void Main()
         {
             DataManager dm = new DataManager();

@@ -33,5 +33,27 @@ namespace CodeSolution.Properties {
                 return ((string)(this["CodeSolutionConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-LT1J0C29\\SQLEXPRESS;Initial Catalog=CodeSolution;Integrated Se" +
+            "curity=SSPI;User ID=CodeSolution;Password=CodeServer")]
+        public string CodeSolutionConnectionString1 {
+            get {
+                return ((string)(this["CodeSolutionConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-LT1J0C29\\SQLEXPRESS;Initial Catalog=CodeSolution;Persist Secur" +
+            "ity Info=True;User ID=sa;Password=CodeServer")]
+        public string CodeSolutionConnectionString2 {
+            get {
+                return ((string)(this["CodeSolutionConnectionString2"]));
+            }
+        }
     }
 }

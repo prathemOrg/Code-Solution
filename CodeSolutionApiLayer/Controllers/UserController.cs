@@ -7,6 +7,7 @@ using System.Web.Http;
 using CodeSolutionDataLayer;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using CodeSolution;
 
 
 
@@ -25,10 +26,18 @@ namespace CodeSolutionApiLayer.Controllers
         {
             try
             {
+                List<JObject> ulist = new List<JObject>();
                 var userList = dataManager.GetAllUsers();
                 if (userList != null)
                 {
-                    return Request.CreateResponse<List<User>>(HttpStatusCode.OK, userList);
+                    foreach(var user in userList)
+                    {
+                        var u = JsonConvert.SerializeObject(user);
+
+                        ulist.Add(JObject.Parse(u));
+
+                    }
+                    return Request.CreateResponse<List<JObject>>(HttpStatusCode.OK, ulist);
                 }
                 else
                 {
@@ -85,8 +94,8 @@ namespace CodeSolutionApiLayer.Controllers
                 
                 dataManager.AddUser(us);
 
-                var message = Request.CreateResponse(HttpStatusCode.Created, user);
-                message.Headers.Location = new Uri(Request.RequestUri + user.ToString());
+                var message = Request.CreateResponse(HttpStatusCode.Created, us);
+                message.Headers.Location = new Uri(Request.RequestUri + us.ToString());
                 return message;
             }
             catch(Exception ex)
